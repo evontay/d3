@@ -19,6 +19,10 @@ p {
   stroke-dasharray: 3;
 }
 
+.y axis {
+  stroke: black;
+}
+
 /* Applied to the tag with the id "some-id" */
 #some-id {
   font-style: italic;
