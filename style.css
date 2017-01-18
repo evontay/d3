@@ -10,6 +10,7 @@ p {
 .red {
   fill: red;
   background: pink;
+  margin: 10px;
 }
 
 .fancy {
