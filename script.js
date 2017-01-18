@@ -22,10 +22,25 @@ var circleSelection = svgSelection.append("circle")
   .style("fill", "pink");
 
 // Binding data into DOM
-var theData = [ 1, 2, 3 ]
+var theData = [ "mary", "barry", "larry"]
 
-var p = d3.select('body').selectAll('h1')
+var h1 = d3.select('body').selectAll('h1')
   .data(theData)
   .enter()
   .append('h1')
-  .text('hello!!!')
+  .text(function (d) {
+    var addedNumber = d;
+    var tempNumber;
+    tempNumber = addedNumber + "!";
+    return tempNumber; }
+    );
+
+// Binding data into DOM 2
+var someData = [1,2,3]
+  var indexing = d3.select('body').selectAll('h2')
+    .data(someData)
+    .enter()
+    .append('h2')
+    .text(function (d,i) {
+      return "index = " + i + " d = " + d;
+    });
