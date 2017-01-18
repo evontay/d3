@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Test</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <svg width="300" height="180">
+      <circle cx="30"  cy="50" r="25" />
+      <circle cx="90"  cy="50" r="25" class="fancy" />
+      <circle cx="150" cy="50" r="25" class="red"/>
+    </svg>
+
+    <svg width="300" height="300" class="red">
+      <g transform="translate (5,15)">
+        <text x='0' y='0'>Howdy!</text>
+      </g>
+
+      <g transform="translate (5, 55)">
+        <!-- M: move to (jump), L: line to, Q: curve to (quadratic) -->
+        <path d="M0,50 L50,0 Q100,0 100,50 " fill="none" stroke-width="3" stroke="blue" />
+      </g>
+
+      <g transform="translate(5, 105)">
+        <!-- C: curve to (cubic), Z: close shape -->
+        <path d="M0,100 C0,0 25,0 125,100 Z" fill="black" />
+      </g>
+    </svg>
+
+  </body>
+</html>

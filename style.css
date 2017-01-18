@@ -1,0 +1,30 @@
+body {
+  background: lightyellow;
+}
+/* Applied to all <p> tags */
+p {
+  color: blue;
+}
+
+/* Applied to all tags with the class "red" */
+.red {
+  fill: red;
+  background: pink;
+}
+
+.fancy {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  stroke-dasharray: 3;
+}
+
+/* Applied to the tag with the id "some-id" */
+#some-id {
+  font-style: italic;
+}
+
+/* Applied only to <p> tags that are inside <li> tags */
+li p {
+  color: #0C0;
+}
