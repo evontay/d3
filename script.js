@@ -1,10 +1,20 @@
-var numbers = [ 5, 4, 10, 1 ],
-    data = [
-      { date: '2014-01-01', amount: 10 },
-      { date: '2014-02-01', amount: 20 },
-      { date: '2014-03-01', amount: 40 },
-      { date: '2014-04-01', amount: 80 }
-    ];
+d3.select("body")
+  .append("svg")
+  .attr("width", 50)
+  .attr("height", 50)
+  .append("circle")
+  .attr("cx", 25)
+  .attr("cy", 25)
+  .attr("r", 25)
+  .style("fill", "purple");
 
-d3.min(numbers);
-// 1
+var bodySelection = d3.select("body");
+
+var svgSelection = bodySelection.append("svg")
+  .attr("width", 50).attr("height", 50);
+
+var circleSelection = svgSelection.append("circle")
+  .attr("cx", 25)
+  .attr("cy", 25)
+  .attr("r", 25)
+  .style("fill", "pink");
