@@ -197,7 +197,6 @@ var svgContainer = d3.select('body').append('svg')
                                     .attr('class', 'red');
 // + 20 is for 20px padding from the elements
 
-
 var rectangles = svgContainer.selectAll('rect')
                               .data(jsonRectangles)
                               .enter()
@@ -209,3 +208,23 @@ var RectangleAttributes = rectangles
                           .attr('height', function(d) { return d.height; })
                           .attr('width', function(d) { return d.width; })
                           .style('fill', function(d) { return d.color; });
+
+// D3.js Scale Linear ==========================================================
+
+//Initial Data
+var initialScaleData = [0, 1000, 3000, 2000, 5000, 4000, 7000, 6000, 9000, 8000, 10000];
+
+var newScaledData = [];
+var minDataPoint = d3.min(initialScaleData);
+var maxDataPoint = d3.max(initialScaleData);
+
+var linearScale = d3.scale.linear()
+                          .domain([ minDataPoint, maxDataPoint ])
+                          .range([0, 100]);
+
+for (var i=0; i < initialScaleData.length; i++) {
+  newScaleData[i] = linearScale(initialScaleData[i]);
+}
+
+newScaledData;
+// [0, 10, 30, 20, 50, 40, 70, 60, 90, 80, 100]
