@@ -245,7 +245,8 @@ var svgContainer = d3.select('body').append('svg')
                                     .attr('height', 200)
                                     .attr('class', 'red');
 
-var circleGroup = svgContainer.append('g');
+var circleGroup = svgContainer.append('g')
+                              .attr('transform', 'translate(80,0)');
 
 var circles = circleGroup.selectAll('circle')
                           .data(circleData)
