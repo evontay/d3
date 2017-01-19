@@ -35,7 +35,7 @@ var h1 = d3.select('body').selectAll('h1')
     return tempNumber; }
     );
 
-// Binding data into DOM 2
+// Binding data into DOM 2 =====================================================
 var someData = [1,2,3]
   var indexing = d3.select('body').selectAll('h2')
     .data(someData)
@@ -45,7 +45,7 @@ var someData = [1,2,3]
       return "index = " + i + " d = " + d;
     });
 
-// Creating SVG data circle visualisation
+// Creating SVG data circle visualisation ======================================
 var circleRadii = [40, 20, 10]
 
 var svgContainer = d3.select('body').append('svg')
@@ -72,7 +72,7 @@ var circleAttributes = circles
                           return returnColor;
                         });
 
-// Using SVG coordinate space
+// Using SVG coordinate space ==================================================
 var spaceCircles = [30, 70, 110];
 
 var svgContainer = d3.select('body').append('svg')
@@ -103,7 +103,7 @@ var circleAttributes = circles
                           return returnColor;
                         });
 
-// Binding JSON Objects to the __data__ Attribute
+// Binding JSON Objects to the __data__ Attribute ==============================
 var jsonCircles = [
   {
     "x_axis": 30,
@@ -139,7 +139,7 @@ var circleAttributes = circles
                         .attr('r', function (d) {return d.radius; })
                         .style('fill', function (d) {return d.color;});
 
-// D3.js Path Data Generator Line
+// D3.js Path Data Generator Line ==============================================
 var lineData = [
   { 'x':1, 'y':5 },
   { 'x':20, 'y':20 },
@@ -163,3 +163,49 @@ var lineGraph = svgContainer.append('path')
                             .attr('stroke', 'blue')
                             .attr('stroke-width', 2)
                             .attr('fill', 'none');
+
+// Dynamically Adjusting SVG Container Space ===================================
+var jsonRectangles = [
+  { 'x_axis':10, 'y_axis':10, 'height':20, 'width':20, 'color':'green' },
+  { 'x_axis':160, 'y_axis':40, 'height':20, 'width':20, 'color':'purple' },
+  { 'x_axis':70, 'y_axis':70, 'height':20, 'width':20, 'color':'red' }
+];
+
+var max_x = 0;
+var max_y = 0;
+
+for (var i = 0; i < jsonRectangles.length; i++) {
+  var temp_x, temp_y;
+
+  var temp_x = jsonRectangles[i].x_axis + jsonRectangles[i].width;
+  var temp_y = jsonRectangles[i].y_axis + jsonRectangles[i].height;
+
+  if ( temp_x >= max_x ) { max_x = temp_x; }
+  if ( temp_y >= max_y ) { max_y = temp_y; }
+  }
+
+
+max_x;
+//returns 180 (160 + 20 width)
+
+max_y;
+//returns 90 (70 + 20 height)
+
+var svgContainer = d3.select('body').append('svg')
+                                    .attr('width', max_x + 20)
+                                    .attr('height', max_y + 20)
+                                    .attr('class', 'red');
+// + 20 is for 20px padding from the elements
+
+
+var rectangles = svgContainer.selectAll('rect')
+                              .data(jsonRectangles)
+                              .enter()
+                              .append('rect');
+
+var RectangleAttributes = rectangles
+                          .attr('x', function(d) { return d.x_axis; })
+                          .attr('y', function(d) { return d.y_axis; })
+                          .attr('height', function(d) { return d.height; })
+                          .attr('width', function(d) { return d.width; })
+                          .style('fill', function(d) { return d.color; });
