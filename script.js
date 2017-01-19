@@ -138,3 +138,28 @@ var circleAttributes = circles
                         .attr('cy', function (d) {return d.y_axis; })
                         .attr('r', function (d) {return d.radius; })
                         .style('fill', function (d) {return d.color;});
+
+// D3.js Path Data Generator Line
+var lineData = [
+  { 'x':1, 'y':5 },
+  { 'x':20, 'y':20 },
+  { 'x':40, 'y':10 },
+  { 'x':60, 'y':40 },
+  { 'x':80, 'y':5 },
+  { 'x':100, 'y':60 }
+];
+
+var lineFunction = d3.line()
+                  .x(function(d) {return d.x;})
+                  .y(function(d) {return d.y;})
+
+var svgContainer = d3.select('body').append('svg')
+                                    .attr('width', 200)
+                                    .attr('height', 200)
+                                    .attr('class', 'red');
+
+var lineGraph = svgContainer.append('path')
+                            .attr('d',lineFunction (lineData))
+                            .attr('stroke', 'blue')
+                            .attr('stroke-width', 2)
+                            .attr('fill', 'none');
